@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SignUp"
+    android:orientation="vertical"
+    android:background="#fff"
+    android:padding="20dp">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:src="@drawable/efficientparkinglogo"
+
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="-20dp"
+        android:fontFamily="@font/coolvetica"
+        android:gravity="center_horizontal"
+        android:text="Benvenuto"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="40sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/coolvetica"
+        android:gravity="center|center_horizontal"
+        android:text="Accedi se non hai un account"
+        android:textSize="18sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="20dp">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/regName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nome e Cognome"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:fontFamily="@font/coolvetica"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/regUsername"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Username"
+            app:counterMaxLength="15">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:fontFamily="@font/coolvetica"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/regEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Email"
+            >
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
+                android:fontFamily="@font/coolvetica"/>
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/regPhonenumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Numero di telefono"
+            >
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:fontFamily="@font/coolvetica"/>
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/regTarga"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Targa"
+            >
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:fontFamily="@font/coolvetica"/>
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/regPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Password"
+            app:passwordToggleEnabled="true"
+            >
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:fontFamily="@font/coolvetica"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+</LinearLayout>
+    <Button
+        android:id="@+id/regRegister"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Registra"
+        android:background="@color/colorPrimaryDark"
+        android:textColor="#fff"/>
+<Button
+    android:id="@+id/regLogin"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Già registrato?"
+    android:background="#fff"/>
+
+    </LinearLayout>

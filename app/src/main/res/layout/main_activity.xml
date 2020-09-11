@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical"
+    android:background="#fff"
+    android:padding="20dp">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="571dp"
+        android:layout_marginLeft="10sp"
+        android:layout_marginTop="20sp"
+        android:layout_marginRight="10sp"
+        android:layout_marginBottom="10sp"
+        android:src="@drawable/efficientparkinglogo" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/coolvetica"
+        android:gravity="center_horizontal"
+        android:text="Efficient Parking"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="30sp" />
+</LinearLayout>

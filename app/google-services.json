@@ -1,0 +1,77 @@
+{
+  "project_info": {
+    "project_number": "635987202169",
+    "firebase_url": "https://efficientparking-62353.firebaseio.com",
+    "project_id": "efficientparking-62353",
+    "storage_bucket": "efficientparking-62353.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:635987202169:android:7f0a22c3638c4f9d3b84a8",
+        "android_client_info": {
+          "package_name": "com.efficientparking.efficientparking"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "635987202169-9i3lv9jtp1ohm85ljf1mlpc6sh41fvi5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDCub3-fpLYzssz7KPXMCHP9NW45OnFvhs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "635987202169-9i3lv9jtp1ohm85ljf1mlpc6sh41fvi5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:635987202169:android:898f5123fc81bc0a3b84a8",
+        "android_client_info": {
+          "package_name": "com.example.efficientparking"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "635987202169-pebu6gaf3psmmo1hjk8na20dgbp8q753.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.efficientparking",
+            "certificate_hash": "76ff05f09a93564fe9c984e6774b691df068290b"
+          }
+        },
+        {
+          "client_id": "635987202169-9i3lv9jtp1ohm85ljf1mlpc6sh41fvi5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDCub3-fpLYzssz7KPXMCHP9NW45OnFvhs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "635987202169-9i3lv9jtp1ohm85ljf1mlpc6sh41fvi5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
