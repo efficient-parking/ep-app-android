@@ -2,13 +2,13 @@ package com.efficientparking.efficientparking;
 
 public class UserHelperClass {
 
-    String name, username, email, phonenumber, password, targa;
+    String nome, username, email, telefono, password, targa;
 
-    public UserHelperClass(String name, String username, String email, String phonenumber, String password, String targa) {
-        this.name = name;
+    public UserHelperClass(String nome, String username, String email, String telefono, String password, String targa) {
+        this.nome = nome;
         this.username = username;
         this.email = email;
-        this.phonenumber = phonenumber;
+        this.telefono = telefono;
         this.password = password;
         this.targa = targa;
     }
@@ -18,11 +18,11 @@ public class UserHelperClass {
     }
 
     public String getName() {
-        return name;
+        return nome;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setName(String nome) {
+        this.nome = nome;
     }
 
     public String getUsername() {
@@ -42,11 +42,11 @@ public class UserHelperClass {
     }
 
     public String getPhonenumber() {
-        return phonenumber;
+        return telefono;
     }
 
-    public void setPhonenumber(String phonenumber) {
-        this.phonenumber = phonenumber;
+    public void setPhonenumber(String telefono) {
+        this.telefono = telefono;
     }
 
     public String getPassword() {

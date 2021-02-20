@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -11,12 +12,11 @@
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
-        android:layout_height="571dp"
-        android:layout_marginLeft="10sp"
-        android:layout_marginTop="20sp"
-        android:layout_marginRight="10sp"
-        android:layout_marginBottom="10sp"
-        android:src="@drawable/efficientparkinglogo" />
+        android:layout_height="200dp"
+        android:layout_marginTop="130dp"
+        android:src="@drawable/efficientparkinglogo"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="24dp" />
 
     <TextView
         android:id="@+id/textView"
@@ -26,5 +26,9 @@
         android:gravity="center_horizontal"
         android:text="Efficient Parking"
         android:textColor="@color/colorPrimaryDark"
-        android:textSize="30sp" />
-</LinearLayout>
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintVertical_bias="0.6"
+        tools:layout_editor_absoluteX="24dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>

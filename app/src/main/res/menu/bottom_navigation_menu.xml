@@ -1,0 +1,17 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/page_1"
+        android:enabled="true"
+        android:icon="@drawable/outline_attach_money_black_18dp"
+        android:title="Pagamento"/>
+    <item
+        android:id="@+id/page_2"
+        android:enabled="true"
+        android:icon="@drawable/outline_gps_fixed_black_18dp"
+        android:title="Posizione" />
+    <item
+        android:id="@+id/page_3"
+        android:enabled="true"
+        android:icon="@drawable/outline_directions_bus_black_18dp"
+        android:title="Trasporto Pubblico" />
+</menu>

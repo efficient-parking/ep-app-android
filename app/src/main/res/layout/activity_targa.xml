@@ -4,58 +4,259 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TargaActivity"
-    android:background="#fff">
+    android:background="#FFFFFF"
+    tools:context=".TargaActivity">
 
     <LinearLayout
-        android:layout_width="369dp"
-        android:layout_height="490dp"
+        android:id="@+id/linearLayout3"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/colorPrimaryDark"
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="350dp"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/coolvetica"
+            android:gravity="center_vertical"
+            android:text="Efficient Parking"
+            android:textColor="#ffffff"
+            android:textSize="22dp" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="50dp"
         android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/textTarga"
+        <ImageView
             android:layout_width="match_parent"
-            android:layout_height="18dp"
+            android:layout_height="40dp"
+            android:src="@drawable/efficientparkinglogo" />
+
+        <TextView
+            android:id="@+id/textBenvenuto"
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
             android:fontFamily="@font/coolvetica"
             android:gravity="center"
-            android:text="Inserisci l'username" />
+            android:text="Benvenuto"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="22dp" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="350dp"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content" />
 
-            <com.google.android.material.textfield.TextInputEditText
+
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        app:layout_constraintBottom_toTopOf="@id/buttonUscita"
+        app:layout_constraintTop_toBottomOf="@id/linearLayout2"
+        android:layout_height="400dp"
+        android:layout_margin="10dp"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:id="@+id/scrollView">
+
+            <TextView
+                android:id="@+id/textView3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/coolvetica"
-                android:hint="Username" />
+                android:text=" La targa dell'auto parcheggiata è:\n"
+                android:textColor="@color/colorPrimaryDark" />
 
-        </com.google.android.material.textfield.TextInputLayout>
+            <TextView
+                android:id="@+id/targa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/coolvetica"
+                android:text="Targa"
+                android:textColor="@color/colorAccent"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="\nPer Pagare"
+                android:gravity="center_horizontal"
+                android:fontFamily="@font/coolvetica"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="24dp"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text=" \nClicca sul tasto con su scritto 'Clicca Qui Per Pagare' \n
+Una volta premuto un timer di 5 minuti ti permetterà di uscire\n"
+                android:fontFamily="@font/coolvetica"
+                android:textColor="@color/colorAccent"
+                />
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/coolvetica"
+                android:gravity="center_horizontal"
+                android:text="\nTi Trovi Qui!"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="24dp" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="254dp"
+                android:src="@drawable/mappa"
+                android:id="@+id/buttonMappa"/>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <Button
+        android:id="@+id/buttonUscita"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="610dp"
+        android:background="#ffffff"
+        android:fontFamily="@font/coolvetica"
+        android:text="Clicca qui per pagare"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+
+        tools:layout_editor_absoluteX="0dp" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="#ffffff"
+        android:backgroundTint="#000000"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="-80dp">
+
+        <!--<ImageButton
+            android:id="@+id/buttonPagamento"
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="4dp"
+            android:background="#ffffff"
+            android:src="@drawable/outline_attach_money_black_18dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/buttonPosizione"
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:background="#ffffff"
+            android:src="@drawable/outline_gps_fixed_black_18dp"
+            app:layout_constraintEnd_toStartOf="@+id/buttonTrasporto"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/buttonPagamento"
+            tools:layout_editor_absoluteY="0dp" />
+
+        <ImageButton
+            android:id="@+id/buttonTrasporto"
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:layout_marginRight="5dp"
+            android:background="#ffffff"
+            android:src="@drawable/outline_directions_bus_black_18dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:id="@+id/textView7"
+            android:layout_width="120dp"
+            android:layout_height="20dp"
             android:fontFamily="@font/coolvetica"
-            android:text="Auto parcheggiata da:" />
+            android:gravity="center"
+            android:textColor="@color/colorPrimaryDark"
+            android:text="Pagamento"
+            app:layout_constraintTop_toBottomOf="@id/buttonPagamento"
+            tools:layout_editor_absoluteX="4dp" />
+
+        <TextView
+            android:textColor="@color/colorPrimaryDark"
+            android:id="@+id/textView9"
+            android:layout_width="120dp"
+            android:layout_height="20dp"
+            android:fontFamily="@font/coolvetica"
+            android:gravity="center"
+            android:text="Posizione"
+            app:layout_constraintEnd_toStartOf="@+id/textView8"
+            app:layout_constraintStart_toEndOf="@+id/textView7"
+            app:layout_constraintTop_toBottomOf="@id/buttonPosizione" />
+
+        <TextView
+            android:textColor="@color/colorPrimaryDark"
+            android:id="@+id/textView8"
+            android:layout_width="120dp"
+            android:layout_height="20dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginRight="4dp"
+            android:fontFamily="@font/coolvetica"
+            android:gravity="center"
+            android:text="Trasporto"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/buttonTrasporto" />
+-->
 
         <Button
-            android:id="@+id/button2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/coolvetica"
-            android:text="Paga" />
+            android:id="@+id/buttonPagamento"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="4dp"
+            android:backgroundTint="#000000"
+            android:text="Pagamento"
+            android:textColor="#ffffff"
+            app:layout_constraintStart_toStartOf="parent" />
 
-        <TextView
-            android:id="@+id/targa"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Targa" />
+        <Button
+            android:id="@+id/buttonTrasporto"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="4dp"
+            android:layout_marginEnd="60dp"
+            android:layout_marginRight="60dp"
+            android:backgroundTint="#000000"
+            android:text="Trasporto"
+            android:textColor="#ffffff"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/buttonPosizione"
+            app:layout_constraintStart_toEndOf="@+id/buttonPagamento"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
 
-    </LinearLayout>
+        <Button
+            android:id="@+id/buttonPosizione"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="4dp"
+            android:backgroundTint="#000000"
+            android:text="Posizione"
+            android:textColor="#ffffff"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

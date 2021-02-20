@@ -1,13 +1,13 @@
 package com.efficientparking.efficientparking;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.DataSnapshot;
@@ -16,6 +16,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+
+import java.math.BigInteger;
+import java.nio.charset.Charset;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 public class SignUp extends AppCompatActivity {
 
@@ -61,9 +66,20 @@ public class SignUp extends AppCompatActivity {
                 String reg_Phonenumber = reg_phonenumber.getEditText().getText().toString();
                 String reg_Password = reg_password.getEditText().getText().toString();
                 String reg_Targa = reg_targa.getEditText().getText().toString();
+                reg_Password = md5(reg_Password);
 
                 UserHelperClass helperClass = new UserHelperClass(reg_Name, reg_Username, reg_Email, reg_Phonenumber, reg_Password, reg_Targa);
+                /*while(true) {
+                    if(validateTarga()){
                     reference.child(reg_Targa).setValue(helperClass);
+                    Intent intent = new Intent(SignUp.this, TargaActivity.class);
+                    startActivity(intent);
+                    }
+                    else{
+                        continue;
+                    }
+                }*/
+                reference.child(reg_Targa).setValue(helperClass);
                 Intent intent = new Intent(SignUp.this, TargaActivity.class);
                 startActivity(intent);
     }
@@ -89,52 +105,90 @@ public class SignUp extends AppCompatActivity {
         String _phoneNo = reg_phonenumber.getEditText().getText().toString().trim();
         String _email = reg_email.getEditText().getText().toString().trim();
         String _targa = reg_targa.getEditText().getText().toString().trim();
+        if(_name.isEmpty()){
+            reg_name.setError("Il nome non può essere vuoto");
+            reg_name.requestFocus();
+            return false;
+        }
+        else {
+            reg_name.setError(null);
+            reg_name.setErrorEnabled(false);
+        }
         if(_username.isEmpty()){
             reg_username.setError("L'username non può essere vuoto");
             reg_username.requestFocus();
             return false;
         }
-        else if(_password.isEmpty()){
-            reg_password.setError("La password non può essere vuota");
-            reg_password.requestFocus();
-            return false;
+        else {
+            reg_username.setError(null);
+            reg_username.setErrorEnabled(false);
         }
-        else if(_targa.isEmpty()){
-            reg_targa.setError("La targa non può essere vuota");
-            reg_targa.requestFocus();
-            return false;
-        }
-        else if(_name.isEmpty()){
-            reg_name.setError("Il nome non può essere vuoto");
-            reg_name.requestFocus();
-            return false;
-        }
-        else if(_email.isEmpty()){
+        if(_email.isEmpty()){
             reg_email.setError("L'email non può essere vuota");
             reg_email.requestFocus();
             return false;
         }
-        else if(_phoneNo.isEmpty()){
+        else {
+            reg_email.setError(null);
+            reg_email.setErrorEnabled(false);
+        }
+        if(_phoneNo.isEmpty()){
             reg_phonenumber.setError("Il numero di telefono non può essere vuoto");
             reg_phonenumber.requestFocus();
             return false;
         }
+        else {
+            reg_phonenumber.setError(null);
+            reg_phonenumber.setErrorEnabled(false);
+        }
+        if(_targa.isEmpty()){
+            reg_targa.setError("La targa non può essere vuota");
+            reg_targa.requestFocus();
+            return false;
+        }
+        else {
+            reg_targa.setError(null);
+            reg_targa.setErrorEnabled(false);
+        }
+        if(_password.isEmpty()){
+            reg_password.setError("La password non può essere vuota");
+            reg_password.requestFocus();
+            return false;
+        }
+        if(_password.length()<8){
+            reg_password.setError("La password dev'essere lunga almeno 8 caratteri");
+            reg_password.requestFocus();
+            return false;
+        }
+        else {
+            reg_password.setError(null);
+            reg_password.setErrorEnabled(false);
+        }
+        if(!(_email.contains("@") && _email.contains("."))){
+            reg_email.setError("L'email non è valida");
+            reg_email.requestFocus();
+            return false;
+        }
+        else {
+            reg_email.setError(null);
+            reg_email.setErrorEnabled(false);
+        }
         return true;
     }
 
-    private boolean validateUsername(){
-        final String _username = reg_username.getEditText().getText().toString().trim();
-        Query checkUser = FirebaseDatabase.getInstance().getReference("users").orderByChild("username").equalTo(_username);
+    private boolean validateTarga(){
+        final String _targa = reg_targa.getEditText().getText().toString().trim();
+        Query checkUser = FirebaseDatabase.getInstance().getReference("users").orderByChild("targa").equalTo(_targa);
         checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
-                    reg_username.setError("User already exists");
-                    Toast.makeText(SignUp.this, "User already exists", Toast.LENGTH_SHORT).show();
+                    reg_targa.setError("Targa già registrata");
+                    Toast.makeText(SignUp.this, "Targa già registrata", Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    reg_username.setError(null);
-                    reg_username.setErrorEnabled(false);
+                    reg_targa.setError(null);
+                    reg_targa.setErrorEnabled(false);
                 }
             }
 
@@ -143,12 +197,32 @@ public class SignUp extends AppCompatActivity {
                 Toast.makeText( SignUp.this, databaseError.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
-        if(reg_username.getError()==("User already exists")){
+        if(reg_targa.getError()==("Targa già registrata")){
             return false;
         }
         else{
             return true;
         }
     }
+
+    public static String md5(String s)
+    {
+        MessageDigest digest;
+        try
+        {
+            digest = MessageDigest.getInstance("MD5");
+            digest.update(s.getBytes(Charset.forName("US-ASCII")),0,s.length());
+            byte[] magnitude = digest.digest();
+            BigInteger bi = new BigInteger(1, magnitude);
+            String hash = String.format("%0" + (magnitude.length << 1) + "x", bi);
+            return hash;
+        }
+        catch (NoSuchAlgorithmException e)
+        {
+            e.printStackTrace();
+        }
+        return "";
+    }
+
 }
 
