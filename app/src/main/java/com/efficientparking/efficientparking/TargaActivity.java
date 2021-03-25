@@ -11,12 +11,21 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.efficientparking.efficientparking.Config.Config;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.paypal.android.sdk.payments.PayPalConfiguration;
 
 import java.util.HashMap;
 
 public class TargaActivity extends AppCompatActivity {
+
+    public static final int PAYPAL_REQUEST_CODE = 7171;
+
+    private static PayPalConfiguration config = new PayPalConfiguration()
+            .environment(PayPalConfiguration.ENVIRONMENT_SANDBOX)
+            .clientId(Config.PAYPAL_CLIENT_ID);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +51,7 @@ public class TargaActivity extends AppCompatActivity {
                 FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
                 DatabaseReference reference = rootNode.getReference("users");
                 reference.child(targa).child("uscita").setValue("0");
+                openNewActivity();
             }
         });
 
@@ -55,6 +65,11 @@ public class TargaActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    public void openNewActivity(){
+        Intent intent = new Intent(this, PaypalPayment.class);
+        startActivity(intent);
     }
 
 }

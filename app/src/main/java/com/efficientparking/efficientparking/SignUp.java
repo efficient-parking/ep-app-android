@@ -22,6 +22,8 @@ import java.nio.charset.Charset;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+import static java.security.MessageDigest.getInstance;
+
 public class SignUp extends AppCompatActivity {
 
     TextInputLayout reg_name, reg_username, reg_email, reg_phonenumber, reg_password, reg_targa;
@@ -66,7 +68,8 @@ public class SignUp extends AppCompatActivity {
                 String reg_Phonenumber = reg_phonenumber.getEditText().getText().toString();
                 String reg_Password = reg_password.getEditText().getText().toString();
                 String reg_Targa = reg_targa.getEditText().getText().toString();
-                reg_Password = md5(reg_Password);
+                reg_Password = hash(reg_Password);
+                reg_Password = bin2hex(getHash(reg_Password));
 
                 UserHelperClass helperClass = new UserHelperClass(reg_Name, reg_Username, reg_Email, reg_Phonenumber, reg_Password, reg_Targa);
                 /*while(true) {
@@ -205,12 +208,12 @@ public class SignUp extends AppCompatActivity {
         }
     }
 
-    public static String md5(String s)
+    public static String hash(String s)
     {
         MessageDigest digest;
         try
         {
-            digest = MessageDigest.getInstance("MD5");
+            digest = getInstance("MD5");
             digest.update(s.getBytes(Charset.forName("US-ASCII")),0,s.length());
             byte[] magnitude = digest.digest();
             BigInteger bi = new BigInteger(1, magnitude);
@@ -222,6 +225,22 @@ public class SignUp extends AppCompatActivity {
             e.printStackTrace();
         }
         return "";
+    }
+
+    public byte[] getHash(String password) {
+        MessageDigest digest=null;
+        try {
+            digest = MessageDigest.getInstance("SHA-256");
+        } catch (NoSuchAlgorithmException e1) {
+            // TODO Auto-generated catch block
+            e1.printStackTrace();
+        }
+        digest.reset();
+        return digest.digest(password.getBytes());
+    }
+
+    static String bin2hex(byte[] data) {
+        return String.format("%0" + (data.length*2) + "X", new BigInteger(1, data));
     }
 
 }
